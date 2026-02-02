@@ -1,10 +1,22 @@
-body{font-family:Inter,system-ui,Arial;background:#fafafa;color:#111}
-.container{max-width:1100px;margin:24px auto;padding:12px}
-h1{margin-bottom:12px}
-#board{display:flex;gap:12px}
-.column{background:#fff;border:1px solid #e6e6e6;border-radius:8px;padding:8px;width:250px}
-.column h3{margin:0 0 8px 0}
-.card{background:#f7f7f9;border-radius:6px;padding:8px;margin-bottom:8px;border:1px solid #eee}
+body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:#0f1720;color:#e6eef6;margin:0}
+.container{max-width:1200px;margin:20px auto;padding:18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.topbar h1{margin:0;font-size:20px}
+.top-controls button{background:#2563eb;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+.board{display:flex;gap:16px}
+.column{background:linear-gradient(180deg,#0b1220,#07121a);border-radius:10px;padding:12px;width:280px;box-shadow:0 6px 18px rgba(2,6,23,0.6);min-height:320px;border:1px solid rgba(255,255,255,0.04)}
+.column h3{color:#9fb0c8;margin:0 0 8px 0;display:flex;justify-content:space-between;align-items:center}
+.column .count{font-size:12px;color:#7f99b3}
+.list{min-height:50px}
+.card{background:linear-gradient(180deg,#0f2433,#0b2b3b);border-radius:8px;padding:10px;margin-bottom:10px;border-left:4px solid #2dd4bf;color:#d7eef6;cursor:grab}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(2,6,23,0.6)}
+.card .meta{font-size:11px;color:#8aa6bf;margin-top:6px}
 .controls{margin-top:16px;display:flex;gap:8px}
-#title{flex:1;padding:8px}
-#desc{flex:2;padding:8px}
+#title{flex:1;padding:8px;border-radius:6px;border:1px solid #203040;background:#071826;color:#e6eef6}
+#desc{flex:2;padding:8px;border-radius:6px;border:1px solid #203040;background:#071826;color:#e6eef6}
+/* modal */
+.modal{position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(1,4,9,0.6);display:flex;align-items:center;justify-content:center}
+.modal-content{background:#071826;color:#e6eef6;padding:20px;border-radius:8px;max-width:720px;width:90%;box-shadow:0 12px 36px rgba(2,6,23,0.8)}
+.modal-close{float:right;font-size:20px;cursor:pointer}
+.modal-actions button{margin-right:8px;padding:8px 10px;border-radius:6px;border:none;background:#2563eb;color:white}
+.new-badge{background:#06b6d4;color:#042f36;padding:4px 8px;border-radius:6px;font-size:12px}

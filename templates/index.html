@@ -7,14 +7,41 @@
 </head>
 <body>
   <div class="container">
-    <h1>Jarvis Kanban</h1>
-    <div id="board"></div>
-    <div class="controls">
+    <header class="topbar">
+      <h1>Jarvis Kanban</h1>
+      <div class="top-controls"> 
+        <button id="new-task-btn">New Task</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="board" class="board"></div>
+    </main>
+
+    <div class="controls" id="new-task-form" style="display:none;">
       <input id="title" placeholder="New task title">
       <textarea id="desc" placeholder="Description"></textarea>
       <button id="create">Create in Backlog</button>
+      <button id="cancel-create">Cancel</button>
     </div>
   </div>
+
+  <!-- Modal for task details -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <div id="modal-attachments"></div>
+      <div class="modal-actions">
+        <button id="move-todo">Move to To-Do</button>
+        <button id="move-inprogress">Move to In-Progress</button>
+        <button id="move-done">Move to Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   <script src="/static/app.js"></script>
 </body>
 </html>

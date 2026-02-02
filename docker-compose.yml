@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -c "python app.py"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  worker:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -c "python worker.py"
+    restart: unless-stopped

@@ -2,11 +2,22 @@ import sqlite3
 import time
 import os
 from datetime import datetime
+import requests
 
 BASE_DIR = os.path.dirname(__file__)
 DB_PATH = os.path.join(BASE_DIR, 'kanban.db')
 
 POLL_INTERVAL = 10
+DISCORD_WEBHOOK = os.environ.get('DISCORD_WEBHOOK')  # set locally if desired
+
+def post_discord(message):
+    url = DISCORD_WEBHOOK
+    if not url:
+        return
+    try:
+        requests.post(url, json={"content": message}, timeout=5)
+    except Exception as e:
+        print(f"[worker] Discord post failed: {e}")
 
 def claim_task(conn, task):
     now = datetime.utcnow().isoformat()
@@ -15,8 +26,9 @@ def claim_task(conn, task):
     cur.execute('INSERT INTO audit (task_id,event,payload,created_at) VALUES (?,?,?,?)',
                 (task['id'],'claimed_by_jarvis','',now))
     conn.commit()
-    print(f"[worker] Claimed task {task['id']} - {task['title']}")
-    # TODO: Post to Discord channel via assistant (we will send a message when processing)
+    msg = f"Jarvis claimed task #{task['id']}: {task['title']}"
+    print(f"[worker] {msg}")
+    post_discord(msg)
 
 def poll_loop():
     conn = sqlite3.connect(DB_PATH)

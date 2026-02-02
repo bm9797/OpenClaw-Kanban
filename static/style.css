@@ -1,0 +1,10 @@
+body{font-family:Inter,system-ui,Arial;background:#fafafa;color:#111}
+.container{max-width:1100px;margin:24px auto;padding:12px}
+h1{margin-bottom:12px}
+#board{display:flex;gap:12px}
+.column{background:#fff;border:1px solid #e6e6e6;border-radius:8px;padding:8px;width:250px}
+.column h3{margin:0 0 8px 0}
+.card{background:#f7f7f9;border-radius:6px;padding:8px;margin-bottom:8px;border:1px solid #eee}
+.controls{margin-top:16px;display:flex;gap:8px}
+#title{flex:1;padding:8px}
+#desc{flex:2;padding:8px}

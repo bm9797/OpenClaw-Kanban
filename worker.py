@@ -2,7 +2,6 @@ import sqlite3
 import time
 import os
 from datetime import datetime
-import requests
 
 BASE_DIR = os.path.dirname(__file__)
 DB_PATH = os.path.join(BASE_DIR, 'kanban.db')
@@ -15,6 +14,8 @@ def post_discord(message):
     if not url:
         return
     try:
+        # import requests lazily so missing package doesn't crash container at startup
+        import requests
         requests.post(url, json={"content": message}, timeout=5)
     except Exception as e:
         print(f"[worker] Discord post failed: {e}")

@@ -136,5 +136,7 @@ def audit_list():
     return jsonify([dict(r) for r in rows])
 
 if __name__ == '__main__':
-    init_db()
+    # initialize DB inside app context
+    with app.app_context():
+        init_db()
     app.run(host='127.0.0.1', port=8080)
